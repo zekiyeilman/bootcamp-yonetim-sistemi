@@ -14,7 +14,7 @@ try {
 <header class="navbar">
     <div class="nav-container">
         <a href="index.php" class="nav-logo">
-            <span>🚀</span> Bootcamp Hub
+            <span>🚀</span> Bootcamp
         </a>
         <nav class="nav-links">
             <a href="index.php" class="nav-link <?= $active_page == 'index.php' ? 'active' : '' ?>">Dashboard</a>

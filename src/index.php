@@ -36,7 +36,7 @@ try {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bootcamp Hub - Kontrol Paneli</title>
+    <title>Bootcamp - Kontrol Paneli</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -139,7 +139,7 @@ try {
         </div>
 
         <footer class="footer">
-            <p>© 2026 <strong>Bootcamp Hub</strong>. Bütün hakları saklıdır.</p>
+            <p>© 2026 <strong>Bootcamp</strong>. Bütün hakları saklıdır.</p>
         </footer>
     </main>
 

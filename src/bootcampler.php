@@ -149,7 +149,7 @@ try {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bootcamp Yönetimi - Bootcamp Hub</title>
+    <title>Bootcamp Yönetimi - Bootcamp</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -390,7 +390,7 @@ try {
         <?php endif; ?>
 
         <footer class="footer">
-            <p>© 2026 <strong>Bootcamp Hub</strong>. Bütün hakları saklıdır.</p>
+            <p>© 2026 <strong>Bootcamp</strong>. Bütün hakları saklıdır.</p>
             <div class="footer-cloud-tag">☁️ Cloud Native Architecture (GKE & Docker)</div>
         </footer>
     </main>
