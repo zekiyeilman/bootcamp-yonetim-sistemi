@@ -50,7 +50,7 @@ try {
                     if ($e->getCode() == '45000') {
                         $trigger_err = $e->getMessage();
                         if (preg_match("/Hata: (.*)/", $trigger_err, $matches)) { $trigger_err = $matches[1]; }
-                        set_flash_message('danger', 'Hata (İş Kuralı İhlali): ' . $trigger_err);
+                        set_flash_message('danger', 'Hata: ' . $trigger_err);
                     } else {
                         set_flash_message('danger', 'Veritabanı hatası: ' . $e->getMessage());
                     }
@@ -81,7 +81,7 @@ try {
                     if ($e->getCode() == '45000') {
                         $trigger_err = $e->getMessage();
                         if (preg_match("/Hata: (.*)/", $trigger_err, $matches)) { $trigger_err = $matches[1]; }
-                        set_flash_message('danger', 'Hata (İş Kuralı İhlali): ' . $trigger_err);
+                        set_flash_message('danger', 'Hata: ' . $trigger_err);
                     } else {
                         set_flash_message('danger', 'Veritabanı hatası: ' . $e->getMessage());
                     }
