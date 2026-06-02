@@ -1,0 +1,39 @@
+version: '3.8'
+
+services:
+  # PHP Apache Application
+  app:
+    build:
+      context: ../
+      dockerfile: docker/Dockerfile
+    container_name: bootcamp-app
+    ports:
+      - "8080:80"
+    environment:
+      - DB_HOST=db
+      - DB_PORT=3306
+      - DB_DATABASE=bootcamp_db
+      - DB_USER=bootcamp_user
+      - DB_PASSWORD=bootcamp_pass
+      - ENVIRONMENT=development
+    depends_on:
+      - db
+    restart: always
+
+  # MySQL Database Server
+  db:
+    image: mysql:8.0
+    container_name: bootcamp-db
+    ports:
+      - "3306:3306"
+    environment:
+      - MYSQL_DATABASE=bootcamp_db
+      - MYSQL_USER=bootcamp_user
+      - MYSQL_PASSWORD=bootcamp_pass
+      - MYSQL_ROOT_PASSWORD=bootcamp_root_pass
+    volumes:
+      - mysql_data:/var/lib/mysql
+    restart: always
+
+volumes:
+  mysql_data:
