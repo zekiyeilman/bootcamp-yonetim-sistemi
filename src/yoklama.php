@@ -70,7 +70,7 @@ try {
                 }
                 
                 $db->commit();
-                set_flash_message('success', 'Toplu yoklama başarıyla veritabanına kaydedildi.');
+                set_flash_message('success', 'Toplu yoklama başarıyla kaydedildi.');
                 header("Location: yoklama.php?ders_id={$ders_id}&tarih={$tarih}");
                 exit();
             } catch (PDOException $e) {
