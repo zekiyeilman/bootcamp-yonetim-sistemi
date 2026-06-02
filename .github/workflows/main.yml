@@ -27,19 +27,24 @@ jobs:
 
     # Authenticate to Google Cloud using Workload Identity Federation
     - name: Authenticate to Google Cloud
-      uses: google-github-actions/auth@v1
+      id: auth
+      uses: google-github-actions/auth@v2
       with:
+        token_format: 'access_token'
         workload_identity_provider: 'projects/719793544117/locations/global/workloadIdentityPools/github-pool/providers/github-provider'
         service_account: 'github-actions-sa@bootcamp-system-497710.iam.gserviceaccount.com'
 
     # Set up gcloud CLI
     - name: Set up Cloud SDK
-      uses: google-github-actions/setup-gcloud@v1
+      uses: google-github-actions/setup-gcloud@v2
 
-    # Configure Docker client to use Artifact Registry
-    - name: Configure Docker
-      run: |
-        gcloud auth configure-docker ${{ env.GAR_LOCATION }}-docker.pkg.dev --quiet
+    # Login to Google Artifact Registry
+    - name: Login to Artifact Registry
+      uses: docker/login-action@v3
+      with:
+        registry: ${{ env.GAR_LOCATION }}-docker.pkg.dev
+        username: oauth2accesstoken
+        password: ${{ steps.auth.outputs.access_token }}
 
     # Build the Docker image
     - name: Build Docker Image
@@ -57,7 +62,7 @@ jobs:
 
     # Get GKE Credentials to authenticate kubectl
     - name: Get GKE Credentials
-      uses: google-github-actions/get-gke-credentials@v1
+      uses: google-github-actions/get-gke-credentials@v2
       with:
         cluster_name: ${{ env.GKE_CLUSTER }}
         location: ${{ env.GKE_ZONE }}
