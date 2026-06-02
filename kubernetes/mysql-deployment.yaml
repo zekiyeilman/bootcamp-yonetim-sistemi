@@ -6,6 +6,8 @@ metadata:
     app: mysql
 spec:
   replicas: 1
+  strategy:
+    type: Recreate
   selector:
     matchLabels:
       app: mysql
@@ -17,6 +19,8 @@ spec:
       containers:
         - name: mysql
           image: mysql:8.0
+          args:
+            - "--log-bin-trust-function-creators=1"
           ports:
             - containerPort: 3306
               name: mysql
