@@ -177,16 +177,7 @@ try {
                         Bu dersin bağlı olduğu bootcamp programında kayıtlı öğrenci bulunamadı. Lütfen önce programa öğrenci atayın!
                     </p>
                 <?php else: ?>
-                    <!-- Database Trigger Rules Notice -->
-                    <div style="background: rgba(245, 158, 11, 0.05); border: 1px solid rgba(245, 158, 11, 0.15); border-radius: 8px; padding: 1rem; margin-bottom: 1.5rem;">
-                        <h4 style="color: var(--warning); display: flex; align-items: center; gap: 0.5rem; font-size: 0.9rem;">
-                            ⚡ Veritabanı İş Kuralları (Active Triggers)
-                        </h4>
-                        <ul style="color: var(--text-secondary); font-size: 0.8rem; margin-top: 0.5rem; margin-left: 1.25rem; line-height: 1.5;">
-                            <li><strong>tg_Katilim_Tarih_Kontrol:</strong> Geleceğe ait bir tarihe yoklama girilmesini engeller.</li>
-                            <li><strong>tg_YoklamaTekil:</strong> Aynı gün, aynı ders için mükerrer (çift) yoklama girilmesini engeller.</li>
-                        </ul>
-                    </div>
+
 
                     <form action="yoklama.php" method="POST">
                         <input type="hidden" name="csrf_token" value="<?= $csrf_token ?>">
