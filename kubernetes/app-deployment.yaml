@@ -23,7 +23,7 @@ spec:
         - name: php-app
           # NOTE: Replace this image with your Google Artifact Registry path in GKE
           # Example: europe-west1-docker.pkg.dev/[PROJECT_ID]/[REGISTRY_NAME]/php-app:latest
-          image: europe-west1-docker.pkg.dev/your-gcp-project/bootcamp-registry/php-app:latest
+          image: europe-west1-docker.pkg.dev/bootcamp-system-497710/docker-repo/php-app:latest
           imagePullPolicy: Always
           ports:
             - containerPort: 80
