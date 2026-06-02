@@ -215,10 +215,7 @@ try {
         <?php if (!isset($_GET['view']) || $_GET['view'] === 'ogrenci'): ?>
             <div class="card" style="margin-bottom: 2rem;">
                 <h2>Öğrenci Başarı Raporu (Dijital Karne)</h2>
-                <p style="color: var(--text-secondary); margin-bottom: 1.5rem; font-size: 0.85rem;">
-                    Seçeceğiniz öğrencinin katıldığı tüm bootcampleri, girdiği ders notlarını, ders katılım yüzdelerini ve 
-                    veritabanında hesaplanan <strong>genel ağırlıklı ortalamasını (fn_OrtalamaNot)</strong> tek ekranda inceleyin.
-                </p>
+
                 
                 <form action="raporlar.php" method="GET" style="display: flex; gap: 1rem; align-items: flex-end; flex-wrap: wrap;">
                     <input type="hidden" name="view" value="ogrenci">
@@ -342,9 +339,7 @@ try {
         <?php elseif ($_GET['view'] === 'bootcamp'): ?>
             <div class="card" style="margin-bottom: 2rem;">
                 <h2>Bootcamp Katılım Raporu (% Bazlı Analiz)</h2>
-                <p style="color: var(--text-secondary); margin-bottom: 1.5rem; font-size: 0.85rem;">
-                    Seçeceğiniz bootcamp programındaki tüm öğrencilerin derslere toplam katılım oranlarını ve yüzde bazlı devam durumlarını karşılaştırmalı olarak listeleyin.
-                </p>
+
                 
                 <form action="raporlar.php" method="GET" style="display: flex; gap: 1rem; align-items: flex-end; flex-wrap: wrap;">
                     <input type="hidden" name="view" value="bootcamp">
@@ -418,10 +413,7 @@ try {
         <?php elseif ($_GET['view'] === 'ders'): ?>
             <div class="card" style="margin-bottom: 2rem;">
                 <h2>Ders Başarı Raporu & Çan Eğrisi Analizi</h2>
-                <p style="color: var(--text-secondary); margin-bottom: 1.5rem; font-size: 0.85rem;">
-                    Seçeceğiniz spesifik ders modülünün genel başarı ortalamasını ve öğrenci notlarının dağılımını 
-                    görsel bir <strong>Çan Eğrisi (Grade Distribution Bar)</strong> grafiği eşliğinde inceleyin.
-                </p>
+
                 
                 <form action="raporlar.php" method="GET" style="display: flex; gap: 1rem; align-items: flex-end; flex-wrap: wrap;">
                     <input type="hidden" name="view" value="ders">
