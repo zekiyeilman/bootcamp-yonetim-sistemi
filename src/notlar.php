@@ -164,7 +164,7 @@ try {
         <div style="margin-bottom: 2.5rem;">
             <span class="badge badge-secondary" style="margin-bottom: 0.5rem;">Akademik Değerlendirme</span>
             <h1 style="font-size: 2.5rem;">💯 Akademik Not Sistemi</h1>
-            <p style="color: var(--text-secondary);">Dersler için Sınav, Ödev ve Proje kategorilerinde öğrencilere not girişleri yapın. Not aralıkları 0-100 arasında veritabanı seviyesinde korunur.</p>
+            <p style="color: var(--text-secondary);">Dersler için Sınav, Ödev ve Proje kategorilerinde öğrencilere not girişleri yapın.</p>
         </div>
 
         <?php display_flash_message(); ?>
