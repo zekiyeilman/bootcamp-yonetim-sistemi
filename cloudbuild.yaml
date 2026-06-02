@@ -1,15 +1,16 @@
 steps:
   # 1. Docker imajını build et
   - name: 'gcr.io/cloud-builders/docker'
-    args: ['build', '-t', 'europe-west1-docker.pkg.dev/bootcamp-system-497710/docker-repo/php-app:latest', '-f', 'docker/Dockerfile', '.']
+    args: ['build', '-t', 'europe-west1-docker.pkg.dev/bootcamp-system-497710/docker-repo/php-app:$COMMIT_SHA', '-f', 'docker/Dockerfile', '.']
   
   # 2. İmajı push et
   - name: 'gcr.io/cloud-builders/docker'
-    args: ['push', 'europe-west1-docker.pkg.dev/bootcamp-system-497710/docker-repo/php-app:latest']
+    args: ['push', 'europe-west1-docker.pkg.dev/bootcamp-system-497710/docker-repo/php-app:$COMMIT_SHA']
 
-  # 3. Kubernetes'i güncelle
+  # 3. GKE kimlik bilgilerini al (Buraya proje id ve zone'u açıkça yazdık)
+  - name: 'gcr.io/cloud-builders/gcloud'
+    args: ['container', 'clusters', 'get-credentials', 'bootcamp-cluster', '--zone', 'europe-west1-b', '--project', 'bootcamp-system-497710']
+
+  # 4. Kubernetes deployment'ı güncelle
   - name: 'gcr.io/cloud-builders/kubectl'
-    args: ['apply', '-f', 'kubernetes/']
-    env:
-      - 'CLOUDSDK_COMPUTE_ZONE=europe-west1-b'
-      - 'CLOUDSDK_CONTAINER_CLUSTER=bootcamp-cluster' # Kendi cluster ismini yaz
+    args: ['set', 'image', 'deployment/php-app', 'php-app=europe-west1-docker.pkg.dev/bootcamp-system-497710/docker-repo/php-app:$COMMIT_SHA']
