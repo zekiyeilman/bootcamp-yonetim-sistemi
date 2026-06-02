@@ -17,16 +17,20 @@ jobs:
   setup-build-publish-deploy:
     name: Setup, Build, Publish, and Deploy
     runs-on: ubuntu-latest
+    permissions:
+      contents: 'read'
+      id-token: 'write'
 
     steps:
     - name: Checkout
       uses: actions/checkout@v3
 
-    # Authenticate to Google Cloud using a Service Account Key stored in GitHub Secrets
+    # Authenticate to Google Cloud using Workload Identity Federation
     - name: Authenticate to Google Cloud
       uses: google-github-actions/auth@v1
       with:
-        credentials_json: ${{ secrets.GCP_SA_KEY }}
+        workload_identity_provider: ${{ secrets.WIF_PROVIDER }}
+        service_account: ${{ secrets.WIF_SERVICE_ACCOUNT }}
 
     # Set up gcloud CLI
     - name: Set up Cloud SDK
