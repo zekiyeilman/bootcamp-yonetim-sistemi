@@ -6,6 +6,7 @@ on:
       - main
 
 env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
   PROJECT_ID: bootcamp-system-497710
   GKE_CLUSTER: bootcamp-cluster
   GKE_ZONE: europe-west1-b
