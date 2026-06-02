@@ -100,87 +100,46 @@ try {
             </div>
         </div>
 
-        <div class="grid-2">
-            <div class="card">
-                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
-                    <h2>Aktif Eğitim Programları</h2>
-                    <a href="bootcampler.php" class="btn btn-secondary btn-sm">Hepsini Gör</a>
-                </div>
-                
-                <?php if (empty($bootcampler)): ?>
-                    <p style="color: var(--text-muted); text-align: center; padding: 2rem 0;">Kayıtlı aktif bootcamp programı bulunamadı.</p>
-                <?php else: ?>
-                    <div class="table-responsive">
-                        <table>
-                            <thead>
+        <div class="card" style="margin-top: 2rem;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
+                <h2>Aktif Eğitim Programları</h2>
+                <a href="bootcampler.php" class="btn btn-secondary btn-sm">Hepsini Gör</a>
+            </div>
+            
+            <?php if (empty($bootcampler)): ?>
+                <p style="color: var(--text-muted); text-align: center; padding: 2rem 0;">Kayıtlı aktif bootcamp programı bulunamadı.</p>
+            <?php else: ?>
+                <div class="table-responsive">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Program Adı</th>
+                                <th>Eğitmen</th>
+                                <th>Süreç</th>
+                                <th>Kayıtlı Öğrenci</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php foreach ($bootcampler as $bootcamp): ?>
                                 <tr>
-                                    <th>Program Adı</th>
-                                    <th>Eğitmen</th>
-                                    <th>Süreç</th>
-                                    <th>Kayıtlı Öğrenci</th>
+                                    <td style="font-weight: 600;"><?= htmlspecialchars($bootcamp['ad']) ?></td>
+                                    <td><?= htmlspecialchars($bootcamp['egitmen_ad'] ?: 'Atanmadı') ?></td>
+                                    <td style="font-size: 0.85rem; color: var(--text-secondary);">
+                                        <?= htmlspecialchars($bootcamp['baslangic_tarihi']) ?> / <?= htmlspecialchars($bootcamp['bitis_tarihi']) ?>
+                                    </td>
+                                    <td>
+                                        <span class="badge badge-info"><?= $bootcamp['ogrenci_sayisi'] ?> Öğrenci</span>
+                                    </td>
                                 </tr>
-                            </thead>
-                            <tbody>
-                                <?php foreach ($bootcampler as $bootcamp): ?>
-                                    <tr>
-                                        <td style="font-weight: 600;"><?= htmlspecialchars($bootcamp['ad']) ?></td>
-                                        <td><?= htmlspecialchars($bootcamp['egitmen_ad'] ?: 'Atanmadı') ?></td>
-                                        <td style="font-size: 0.85rem; color: var(--text-secondary);">
-                                            <?= htmlspecialchars($bootcamp['baslangic_tarihi']) ?> / <?= htmlspecialchars($bootcamp['bitis_tarihi']) ?>
-                                        </td>
-                                        <td>
-                                            <span class="badge badge-info"><?= $bootcamp['ogrenci_sayisi'] ?> Öğrenci</span>
-                                        </td>
-                                    </tr>
-                                <?php endforeach; ?>
-                            </tbody>
-                        </table>
-                    </div>
-                <?php endif; ?>
-            </div>
-
-            <div class="card" style="background: linear-gradient(135deg, rgba(17, 24, 39, 0.7) 0%, rgba(99, 102, 241, 0.05) 100%);">
-                <h2 style="margin-bottom: 1rem;">Mühendislik & Bulut Altyapısı</h2>
-                <p style="color: var(--text-secondary); line-height: 1.6; margin-bottom: 1.5rem;">
-                    Bu sistem, Google Kubernetes Engine (GKE) mimarisine ve gelişmiş ilişkisel veritabanı kurallarına göre tasarlanmıştır:
-                </p>
-                
-                <div style="display: flex; flex-direction: column; gap: 1rem;">
-                    <div style="display: flex; gap: 1rem; align-items: flex-start;">
-                        <span style="font-size: 1.5rem; background: rgba(99, 102, 241, 0.1); padding: 0.4rem; border-radius: 8px; color: var(--primary);">🐳</span>
-                        <div>
-                            <h4 style="color: var(--text-primary);">Dockerized Isolation</h4>
-                            <p style="color: var(--text-secondary); font-size: 0.85rem;">PHP & Apache ve MySQL veritabanı tamamen yalıtılmış containerlar olarak yapılandırılmıştır.</p>
-                        </div>
-                    </div>
-                    <div style="display: flex; gap: 1rem; align-items: flex-start;">
-                        <span style="font-size: 1.5rem; background: rgba(168, 85, 247, 0.1); padding: 0.4rem; border-radius: 8px; color: var(--secondary);">☸️</span>
-                        <div>
-                            <h4 style="color: var(--text-primary);">GKE Self-Healing & Scaling</h4>
-                            <p style="color: var(--text-secondary); font-size: 0.85rem;">Liveness & Readiness probe'ları sayesinde Kubernetes podları sürekli denetlenir, çökmeler otomatik giderilir.</p>
-                        </div>
-                    </div>
-                    <div style="display: flex; gap: 1rem; align-items: flex-start;">
-                        <span style="font-size: 1.5rem; background: rgba(16, 185, 129, 0.1); padding: 0.4rem; border-radius: 8px; color: var(--success);">🔒</span>
-                        <div>
-                            <h4 style="color: var(--text-primary);">Veri Güvenliği ve Korumalar</h4>
-                            <p style="color: var(--text-secondary); font-size: 0.85rem;">PDO Prepared Statements ile SQL Injection engellenmiş, POST formları ile CSRF güvenliği sağlanmıştır.</p>
-                        </div>
-                    </div>
-                    <div style="display: flex; gap: 1rem; align-items: flex-start;">
-                        <span style="font-size: 1.5rem; background: rgba(6, 182, 212, 0.1); padding: 0.4rem; border-radius: 8px; color: var(--info);">⚡</span>
-                        <div>
-                            <h4 style="color: var(--text-primary);">Veritabanı Tetikleyicileri (Triggers)</h4>
-                            <p style="color: var(--text-secondary); font-size: 0.85rem;">İş kuralları triggers (<code>tg_Katilim_Tarih_Kontrol</code>, <code>tg_NotKontrol</code>) ve saklı yordamlar (<code>sp_OgrenciBul</code>) ile DB seviyesinde kontrol edilir.</p>
-                        </div>
-                    </div>
+                            <?php endforeach; ?>
+                        </tbody>
+                    </table>
                 </div>
-            </div>
+            <?php endif; ?>
         </div>
 
         <footer class="footer">
             <p>© 2026 <strong>Bootcamp Hub</strong>. Bütün hakları saklıdır.</p>
-            <div class="footer-cloud-tag">☁️ Cloud Native Architecture (GKE & Docker)</div>
         </footer>
     </main>
 
