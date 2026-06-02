@@ -13,13 +13,11 @@ $error_msg = null;
 try {
     $db = getDB();
     
-    // Fetch statistics
     $stats['ogrenci'] = $db->query("SELECT COUNT(*) FROM ogrenci")->fetchColumn();
     $stats['egitmen'] = $db->query("SELECT COUNT(*) FROM egitmen")->fetchColumn();
     $stats['bootcamp'] = $db->query("SELECT COUNT(*) FROM bootcamp")->fetchColumn();
     $stats['ders'] = $db->query("SELECT COUNT(*) FROM ders")->fetchColumn();
     
-    // Fetch bootcampler with trainer name and student count
     $stmt = $db->query("
         SELECT b.id, b.ad, b.baslangic_tarihi, b.bitis_tarihi, 
                CONCAT(e.ad, ' ', e.soyad) as egitmen_ad,
@@ -46,7 +44,6 @@ try {
     <?php include_once __DIR__ . '/navbar.php'; ?>
 
     <main class="container">
-        <!-- Header Section -->
         <div style="margin-bottom: 2.5rem;">
             <span class="badge badge-info" style="margin-bottom: 0.5rem;">Yönetim Gösterge Paneli</span>
             <h1 style="font-size: 2.5rem; background: linear-gradient(135deg, #fff 30%, var(--text-secondary) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
@@ -72,7 +69,6 @@ try {
             </div>
         <?php endif; ?>
 
-        <!-- Stats Grid -->
         <div class="stats-grid">
             <div class="stat-card">
                 <div class="stat-icon primary">🧑‍🎓</div>
@@ -105,7 +101,6 @@ try {
         </div>
 
         <div class="grid-2">
-            <!-- Bootcamp List Card -->
             <div class="card">
                 <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
                     <h2>Aktif Eğitim Programları</h2>
@@ -144,7 +139,6 @@ try {
                 <?php endif; ?>
             </div>
 
-            <!-- Architectural Features Card -->
             <div class="card" style="background: linear-gradient(135deg, rgba(17, 24, 39, 0.7) 0%, rgba(99, 102, 241, 0.05) 100%);">
                 <h2 style="margin-bottom: 1rem;">Mühendislik & Bulut Altyapısı</h2>
                 <p style="color: var(--text-secondary); line-height: 1.6; margin-bottom: 1.5rem;">
@@ -177,7 +171,7 @@ try {
                         <span style="font-size: 1.5rem; background: rgba(6, 182, 212, 0.1); padding: 0.4rem; border-radius: 8px; color: var(--info);">⚡</span>
                         <div>
                             <h4 style="color: var(--text-primary);">Veritabanı Tetikleyicileri (Triggers)</h4>
-                            <p style="color: var(--text-secondary); font-size: 0.85rem;">İş kuralları triggers (`tg_Katilim_Tarih_Kontrol`, `tg_NotKontrol`) ve saklı yordamlar (`sp_OgrenciBul`) ile DB seviyesinde kontrol edilir.</p>
+                            <p style="color: var(--text-secondary); font-size: 0.85rem;">İş kuralları triggers (<code>tg_Katilim_Tarih_Kontrol</code>, <code>tg_NotKontrol</code>) ve saklı yordamlar (<code>sp_OgrenciBul</code>) ile DB seviyesinde kontrol edilir.</p>
                         </div>
                     </div>
                 </div>
