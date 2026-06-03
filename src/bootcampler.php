@@ -161,7 +161,7 @@ try {
         <div style="margin-bottom: 2.5rem;">
             <span class="badge badge-success" style="margin-bottom: 0.5rem;">Program Yönetimi</span>
             <h1 style="font-size: 2.5rem;">🚀 Bootcamp Yönetimi</h1>
-            <p style="color: var(--text-secondary);">Yeni eğitim programları tanımlayın, sorumlu eğitmenler atayın ve öğrencilerin kayıt süreçlerini yönetin.</p>
+            <p style="color: var(--text-secondary);">Yeni eğitim programları tanımlayın, sorumlu eğitmenler atayın ve öğrencilerin kayıt süreçlerini yönetin.:???</p>
         </div>
 
         <?php display_flash_message(); ?>
