@@ -1,0 +1,2 @@
+ip adresi:http://34.77.199.242
+github linki:https://github.com/zekiyeilman/bootcamp-yonetim-sistemi
